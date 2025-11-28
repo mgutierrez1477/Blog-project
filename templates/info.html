@@ -1,0 +1,15 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="articulos_info">
+        <h1 class="info-title">{{ articulo.title }}</h1>
+
+        <img src="{{ articulo.image.url }}" alt="{{ articulo.title }}" class="info-image">
+
+        <p class="info-content">{{ articulo.content }}</p>
+
+        <a href="{% url 'articulos' %}" class="btn-back">← Volver</a>
+    </div>
+{% endblock %}

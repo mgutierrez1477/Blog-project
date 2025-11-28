@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block aside %}
+<div class="sidebar">
+
+    <div class="filter_category">
+        <h2>Categorías</h2>
+        <ul>
+            {% for category in categorys %}
+                <li><a href="{% url 'filtro_categoria' category.id %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="filter_tag">
+        <h2>Etiquetas</h2>
+        <ul>
+            {% for tag in tags %}
+                <li><a href="{% url 'filtro_etiqueta' tag.id %}">{{ tag.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="center_text">Artículos</h1>
+
+<form class="barra_busqueda" method="GET" action="">
+    <input 
+        type="text"
+        name="query"
+        placeholder="Buscar artículo"
+        value="{{ query|default:'' }}"
+    >
+    <button class="succes">Buscar</button>
+</form>
+
+<div class="grid">
+    {% for articulo in articulos %}
+    <div class="articulo">
+        <a href="{% url 'info' articulo.id %}">
+            <img class="img_articulo" src="{{ articulo.image.url }}" alt="{{ articulo.title }}">
+        </a>
+        <h1><a href="{% url 'info' articulo.id %}">{{ articulo.title }}</a></h1>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

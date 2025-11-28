@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static './styles.css'%}">
+    {% block styles %} {% endblock %}
+    <title>{% block title%} {% endblock %}</title>
+</head>
+<body>
+    
+    {% include 'layouts/partials/nav_bar.html' %}
+
+<div class='main'>
+    <aside>
+        {% block aside %} {% endblock %}
+    </aside>
+    <main>
+        {% block  content%} {% endblock %}
+    </main>
+
+    {% block scripts %} {% endblock %}
+</div>
+</body>
+</html>
